@@ -47,19 +47,19 @@ init_validator () {
 
 }
 
-while getopts ":c:r:s:v" options; do
+while getopts ":c:r:s:v:" options; do
  case "${options}" in
   c)
     CLUSTER=${OPTARG}
    ;;
   r)
-    RAM_DISK_SIZE={OPTARG}
+    RAM_DISK_SIZE=${OPTARG}
    ;;
   s)
-    SWAP_SIZE={OPTARG}
+    SWAP_SIZE=${OPTARG}
    ;;
   v)
-    VERSION={OPTARG}
+    VERSION=${OPTARG}
    ;;
   :)
     echo "Error: -${OPTARG} requires an argument."
@@ -71,6 +71,8 @@ while getopts ":c:r:s:v" options; do
  esac
 done
 
-install_ansible
+echo "Latitude manager version ${VERSION}"
+
+#install_ansible
 download_latitude_manager $VERSION
 init_validator $CLUSTER $SWAP_SIZE $RAM_DISK_SIZE
