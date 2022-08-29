@@ -25,8 +25,8 @@ install_ansible () {
 }
 
 download_latitude_manager () {
-  echo "Downloading Solana validator manager version $VERSION"
-  cmd="https://github.com/JulI0-concerto/latitude_manager/archive/refs/tags/$VERSION.zip"
+  echo "Downloading Solana validator manager version $1"
+  cmd="https://github.com/JulI0-concerto/latitude_manager/archive/refs/tags/$1.zip"
   echo "starting $cmd"
   curl -fsSL "$cmd" --output latitude_manager.zip
   echo "Unpacking"
@@ -40,9 +40,9 @@ download_latitude_manager () {
 
 init_validator () {
 
-  ansible-playbook --connection=local --inventory ./inventory/${CLUSTER}.yaml --limit localhost  playbooks/config.yaml --extra-vars "{ \
-    'swap_file_size_gb': $SWAP_SIZE, \
-    'ramdisk_size_gb': $RAM_DISK_SIZE, \
+  ansible-playbook --connection=local --inventory ./inventory/"${1}".yaml --limit localhost  playbooks/config.yaml --extra-vars "{ \
+    'swap_file_size_gb': $2, \
+    'ramdisk_size_gb': $3, \
     }"
 
 }
@@ -72,5 +72,5 @@ while getopts ":c:r:s:v" options; do
 done
 
 install_ansible
-download_latitude_manager
-init_validator
+download_latitude_manager $VERSION
+init_validator $CLUSTER $SWAP_SIZE $RAM_DISK_SIZE
