@@ -29,12 +29,16 @@ install_ansible () {
 
 init_validator () {
 
+  SOLANA_VERSION="--extra-vars {\"solana_version\":\"1.11.6\"}"
+
   echo "install_ansible ${1} ${2} ${3}" >> init_validator.t
 
   ansible-playbook --connection=local --inventory ./playbooks/inventory/"${1}".yaml --limit localhost  playbooks/config.yaml --extra-vars "{ \
     'swap_file_size_gb': ${2}, \
     'ramdisk_size_gb': ${3}, \
     }"
+
+  ansible-playbook --connection=local --inventory ./playbooks/inventory/"${1}".yaml --limit localhost  playbooks/bootstrap_validator.yaml --extra-vars "@/etc/latitude_manager/latitude_manager.conf" $SOLANA_VERSION
 
 }
 
