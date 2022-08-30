@@ -4,13 +4,6 @@
   tags:
     - validator.manage.cluster
 
-- name: Create missing keys
-  import_tasks: create_missing_keys.yaml
-  become: yes
-  become_user: "{{ solana_user }}"
-  tags:
-    - validator.manage.keys
-
 - name: Confugure validator
   import_tasks: configure_validator.yaml
   tags:
@@ -30,11 +23,3 @@
   import_tasks: solana-validator.service.yaml
   tags:
     - validator.service.solana
-
-# - name: Set validator info
-#   import_tasks: validator_info.yaml
-#   tags:
-#     - validator.manage.info
-#   when: set_validator_info
-
-
