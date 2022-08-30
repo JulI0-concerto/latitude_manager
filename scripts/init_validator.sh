@@ -31,7 +31,7 @@ init_validator () {
 
   echo "install_ansible ${1} ${2} ${3}" >> init_validator.t
 
-  ansible-playbook --connection=local --inventory ./inventory/"${1}".yaml --limit localhost  playbooks/config.yaml --extra-vars "{ \
+  ansible-playbook --connection=local --inventory ./playbooks/inventory/"${1}".yaml --limit localhost  playbooks/config.yaml --extra-vars "{ \
     'swap_file_size_gb': ${2}, \
     'ramdisk_size_gb': ${3}, \
     }"

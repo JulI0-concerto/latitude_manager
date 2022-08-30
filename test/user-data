@@ -11,5 +11,5 @@ packages:
   - curl
   - unzip
 runcmd:
-  - git clone -b v0.0.4 https://github.com/JulI0-concerto/latitude_manager.git /root/latitude_manager
-  - cd && ./latitude_manager/scripts/init_validator.sh -c testnet -r 200 -s 50 -v v0.0.4
+  - git clone -b v0.0.6 https://github.com/JulI0-concerto/latitude_manager.git /root/latitude_manager
+  - cd /root/latitude_manager && ./scripts/init_validator.sh -c testnet -r 200 -s 50 -v v0.0.6
