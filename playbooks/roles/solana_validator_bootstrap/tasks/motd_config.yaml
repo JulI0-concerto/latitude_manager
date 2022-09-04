@@ -1,0 +1,61 @@
+---
+
+- name: Update header
+  copy:
+    src: 00-header
+    path: /etc/update-motd.d/00-header
+    state: directory
+    owner: root
+    group: root
+    mode: u=rwx,g=xr,o=x
+
+- name: Disable 10-help-text
+  file:
+    path: /etc/update-motd.d/10-help-text
+    owner: root
+    group: root
+    mode: u=rw,g=r
+
+- name: Disable 50-motd-news
+  file:
+    path: /etc/update-motd.d/50-motd-news
+    owner: root
+    group: root
+    mode: u=rw,g=r
+
+- name: Disable 85-fwupd
+  file:
+    path: /etc/update-motd.d/85-fwupd
+    owner: root
+    group: root
+    mode: u=rw,g=r
+
+- name: Disable 88-esm-announce
+  file:
+    path: /etc/update-motd.d/88-esm-announce
+    owner: root
+    group: root
+    mode: u=rw,g=r
+
+- name: Disable 91-contract-ua-esm-status
+  file:
+    path: /etc/update-motd.d/91-contract-ua-esm-status
+    owner: root
+    group: root
+    mode: u=rw,g=r
+
+- name: Disable 91-contract-ua-esm-status
+  file:
+    path: /etc/update-motd.d/91-contract-ua-esm-status
+    owner: root
+    group: root
+    mode: u=rw,g=r
+
+- name: Add Solana hints
+  copy:
+    src: 98-solana-hints
+    path: /etc/update-motd.d/98-solana-hints
+    state: directory
+    owner: root
+    group: root
+    mode: u=rwx,g=xr,o=x

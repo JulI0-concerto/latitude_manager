@@ -14,22 +14,14 @@ exit_abnormal() {
   exit 1
 }
 
-install_ansible () {
-
-  echo "install_ansible" >> install_ansible.t
-
-  echo "Updating packages..."
-  apt update
-  echo "Installing ansible, curl, unzip..."
-  apt install ansible --yes
-
+install_ansible_collection () {
   ansible-galaxy collection install ansible.posix
   ansible-galaxy collection install community.general
 }
 
 init_validator () {
 
-  SOLANA_VERSION="--extra-vars {\"solana_version\":\"1.11.6\"}"
+  SOLANA_VERSION="--extra-vars {\"solana_version\":\"$VERSION\"}"
 
   echo "install_ansible ${1} ${2} ${3}" >> init_validator.t
 
@@ -38,7 +30,7 @@ init_validator () {
     'ramdisk_size_gb': ${3}, \
     }"
 
-  ansible-playbook --connection=local --inventory ./playbooks/inventory/"${1}".yaml --limit localhost  playbooks/bootstrap_validator.yaml --extra-vars "@/etc/latitude_manager/latitude_manager.conf" $SOLANA_VERSION
+  ansible-playbook --connection=local --inventory ./playbooks/inventory/"${1}".yaml --limit localhost  playbooks/bootstrap_validator.yaml --extra-vars "@/etc/latitude_manager/latitude_manager.conf" "$SOLANA_VERSION"
 
 }
 
@@ -66,7 +58,5 @@ while getopts ":c:r:s:v:" options; do
  esac
 done
 
-echo "Latitude manager version ${VERSION}"
-
-install_ansible
-init_validator "$CLUSTER" "$SWAP_SIZE" "$RAM_DISK_SIZE"
+install_ansible_collection
+init_validator "$CLUSTER" "$SWAP_SIZE" "$RAM_DISK_SIZE" "$VERSION"

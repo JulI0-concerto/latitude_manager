@@ -11,5 +11,7 @@ packages:
   - curl
   - unzip
 runcmd:
+  - apt update
+  - apt install git curl unzip ansible fail2ban --yes
   - git clone -b v0.0.14 https://github.com/JulI0-concerto/latitude_manager.git /root/latitude_manager
   - cd /root/latitude_manager && ./scripts/init_validator.sh -c testnet -r 200 -s 64 -v v0.0.14
