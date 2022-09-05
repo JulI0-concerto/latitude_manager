@@ -23,3 +23,9 @@
   import_tasks: solana-validator.service.yaml
   tags:
     - validator.service.solana
+    -
+- name: Custom Motd config
+  import_tasks: motd_config.yaml
+  tags:
+    - validator.service.solana
+
