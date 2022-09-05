@@ -6,10 +6,10 @@ then
   echo ''
   echo -e "👷  Hello Solana Operator. Your node is almost ready."
   echo ''
-  echo -e "🛠    In order to complete the configuration, copy your validator-keypair and your vote-account-keypair in the following location."
+  echo -e "🛠   In order to complete the configuration, copy your validator-keypair and your vote-account-keypair in the following location."
   echo ''
   echo -e "🔑  /home/solana/.secrets/validator-keypair.json"
-  echo -e "🗝    /home/solana/.secrets/vote-account-keypair.json"
+  echo -e "🗝   /home/solana/.secrets/vote-account-keypair.json"
   echo ''
   echo "If you don't have a validator-keypair and vote-account-keypair yet, refer to the official docs to generate one."
   echo -e "📗  https://docs.solana.com/running-validator/validator-start#generate-identity"
