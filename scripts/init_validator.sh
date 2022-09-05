@@ -21,7 +21,7 @@ install_ansible_collection () {
 
 init_validator () {
 
-  SOLANA_VERSION="--extra-vars {\"solana_version\":\"$VERSION\"}"
+  SOLANA_VERSION="--extra-vars={\"solana_version\":\"$VERSION\"}"
 
   echo "install_ansible ${1} ${2} ${3}" >> init_validator.t
 

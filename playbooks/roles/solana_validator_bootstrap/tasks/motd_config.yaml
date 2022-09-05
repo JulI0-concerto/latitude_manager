@@ -3,8 +3,7 @@
 - name: Update header
   copy:
     src: 00-header
-    path: /etc/update-motd.d/00-header
-    state: directory
+    dest: /etc/update-motd.d/00-header
     owner: root
     group: root
     mode: u=rwx,g=xr,o=x
@@ -54,8 +53,7 @@
 - name: Add Solana hints
   copy:
     src: 98-solana-hints
-    path: /etc/update-motd.d/98-solana-hints
-    state: directory
+    dest: /etc/update-motd.d/98-solana-hints
     owner: root
     group: root
     mode: u=rwx,g=xr,o=x
