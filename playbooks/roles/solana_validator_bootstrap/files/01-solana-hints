@@ -24,5 +24,6 @@ then
   echo ''
   echo -e '👀  Watch logs:'
   echo 'tail -f /mnt/solana/logs/solana-validator.log'
-
+  echo ''
+  echo ''
 fi
