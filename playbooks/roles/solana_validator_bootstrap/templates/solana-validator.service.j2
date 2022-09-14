@@ -52,6 +52,8 @@ ExecStart={{ env_path }}/solana-validator \
 --accounts-db-caching-enabled \
 --snapshots {{ snapshots_path }} \
 --tpu-use-quic \
+--skip-poh-verify \
+--full-snapshot-interval-slots 12000 \
 --dynamic-port-range {{ open_solana_ports_start }}-{{ open_solana_ports_end }}
 
 
